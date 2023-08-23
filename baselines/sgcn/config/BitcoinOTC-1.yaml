@@ -1,0 +1,8 @@
+runs: 1
+num_layers: 2
+num_feats: 20
+feat_type: random
+num_epochs: 20
+early_stop_offset: 20
+batch_size: 1000
+embedding_dim: 128

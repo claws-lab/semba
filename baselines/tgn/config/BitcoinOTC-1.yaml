@@ -1,0 +1,5 @@
+runs: 1
+num_epochs: 20
+early_stop_offset: 30
+batch_size: 1000
+embedding_dim: 128

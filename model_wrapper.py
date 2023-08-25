@@ -11,7 +11,7 @@ from torch_geometric.utils import (negative_sampling,
                                    structured_negative_sampling)
 
 from baselines.tgn.tgn import TGNMemory, LastNeighborLoader, IdentityMessage, MeanAggregator
-from baselines.semba.semba import SEMBA, TimeEncoder
+from src.semba import SEMBA, TimeEncoder
 from torch_geometric.nn import GCNConv, GATConv, SAGEConv, TransformerConv, SignedConv
 from torch.nn import Linear, ReLU, LSTM
 from torch_geometric.nn import GCNConv

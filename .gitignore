@@ -1,1 +1,4 @@
-baselines/*/saved_models/*/*/model_state.pt
+baselines/*/saved_models/epinions/*/model_state.pt
+src/*/saved_models/epinions/*/model_state.pt
+TDAP-main*
+baselines/*/config*

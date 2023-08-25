@@ -6,7 +6,7 @@ Paper link: (To appear)
 
 Arxiv: [https://arxiv.org/abs/2207.03408](https://arxiv.org/abs/2207.03408)
 
-# Citation
+## Citation
 
 > @inproceedings{sharma2023representation,\
     title={Representation Learning in Continuous-Time Dynamic Signed Networks},\
@@ -28,7 +28,7 @@ Follow the steps in the given links to install these libraries for your system c
 
 A full set of requirements is given in `requirements.txt`, which can be used to create a conda virtual environment as:
 
-> conda create --name <env> --file requirements.txt
+> `conda create --name <env> --file requirements.txt`
 
 
 ## Data
@@ -42,7 +42,7 @@ We use these 4 datasets in this work:
 These will be automatically downloaded and processed inside the root directory `data/`.
 
 ## Training the models
-> python train.py --model \<MODEL> --dataset \<DATASET> --task \<TASK>
+> `python train.py --model \<MODEL> --dataset \<DATASET> --task \<TASK>`
 
 where we allow the following possibilities 
 
@@ -58,4 +58,4 @@ In addition, we can tune other hyperparameters such as number of epochs, initial
 
 Note that for Epinions dataset, pass the batch size as `--batch_size 16000`. 
 
-**Saved models:** We also provide saved models for each model, dataset, and task triplet except for Epinions. Epinions saved models can be accessed by email us at ksartik@gatech.edu.
+**Saved models:** We also provide saved models for each model, dataset, and task triplet except for Epinions. Test performance can be found by simply running `python eval.py --model \<MODEL> --dataset \<DATASET> --task \<TASK>`. Note that epinions saved models are not uploaded due to large size and will be provided through email requests (contact: ksartik@gatech.edu, dropbox link COMING SOON). 

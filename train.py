@@ -97,7 +97,7 @@ def train(args):
 
 
 @torch.no_grad()
-def test(args, inference_data, epoch, inference_type='val'):
+def test(args, inference_data, inference_type='val'):
     model.eval()
     total_loss, probabilities, pred, true = 0, [], [], []
     total_events = 0

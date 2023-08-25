@@ -60,7 +60,6 @@ class STGNN (torch.nn.Module):
         num_nodes,
         embedding_dim,
         num_layers,
-        ablation='smem-ba-prop',
         nwts=1,
         memory_dim=64,
         time_dim=32,
@@ -68,6 +67,7 @@ class STGNN (torch.nn.Module):
         nbr_size=10,
         device='cpu',
         debug=False,
+        **kwargs
     ):
         self.model_name = model_name
         self.task = task

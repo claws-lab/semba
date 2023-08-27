@@ -226,8 +226,6 @@ if __name__ == '__main__':
     train_cm, test_cm = [], []
     train_losses, val_losses = [], []
     total_time = 0
-    res0 = torch.cuda.memory_reserved(args.device)
-    allc0 = torch.cuda.memory_allocated(args.device)
 
     model = STGNN (args.model, args.task, num_feats, data.num_nodes, args.embedding_dim, args.num_layers, device=args.device, debug=args.debug)
 
@@ -244,22 +242,19 @@ if __name__ == '__main__':
     for epoch in range(1, args.num_epochs + 1):
         model.reset_memory()
         start = time.time()
-        train_loss, train_params = train()
+        train_loss, train_params = train(args)
         time_epch = time.time() - start
-        res_t = torch.cuda.memory_reserved(args.device)
-        allc_t = torch.cuda.memory_allocated(args.device)
         total_time += time_epch
-        val_loss, val_params = test(val_data, epoch)
+        val_loss, val_params = test(args, val_data, epoch)
         lr_scheduler(val_loss)
         print(f'E{epoch:002d} Tr [Loss: {train_loss:.4f} {metric_string(train_params)}]')
         print(f'Val [Loss: {val_loss:.4f} {metric_string(train_params)}]')
         print(f'Time: {time_epch}')
-        print(f'{res0}, {allc0} | {res_t}, {allc_t} | {(res_t - res0)/(1024**2):.4f}, {(allc_t - allc0)/(1024**2):.4f} | {(res_t - res0)/(1024**3):.4f}, {(allc_t - allc0)/(1024**3):.4f}')
         print()
     
-    test_loss, test_params = test(test_data, epoch, 'test')
-    test_trans_loss, test_trans_params = test(test_trans_data, epoch, 'test')
-    test_ind_loss, test_ind_params = test(test_ind_data, epoch, 'test')
+    test_loss, test_params = test(args, test_data, epoch, 'test')
+    test_trans_loss, test_trans_params = test(args, test_trans_data, epoch, 'test')
+    test_ind_loss, test_ind_params = test(args, test_ind_data, epoch, 'test')
     print(f"Time taken: {total_time}")
     print('*****************')
     print('Overall performance')

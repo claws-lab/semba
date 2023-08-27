@@ -2,9 +2,9 @@ import argparse
 
 def parse_args (args):
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model', type=str)
-    parser.add_argument('--dataset', type=str)
-    parser.add_argument('--task', type=str)
+    parser.add_argument('--model', type=str, default='semba')
+    parser.add_argument('--dataset', type=str, default='BitcoinOTC-1')
+    parser.add_argument('--task', type=str, default='sign_class')
     parser.add_argument('--runs', type=int, default=1)
     parser.add_argument('--to_save', action='store_true')
     parser.add_argument('--debug', action='store_true')

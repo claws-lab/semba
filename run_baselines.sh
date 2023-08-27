@@ -1,8 +1,10 @@
 datasets=(BitcoinOTC-1 BitcoinAlpha-1 wikirfa epinions) # 
-models=(gcn sgcn sigat sgclstm tgn semba semba-noprop prop) #
+models=(gcn sgcn sigat sgclstm tgn semba) #
 tasks=(signlink_class sign_class link_pred signwt_pred) 
 num_epochs=(5 10 15 20) #
 lr_inits=(0.01 0.001 0.0001)
+
+device=cpu
 
 for dataset in "${datasets[@]}"; do
     for model in "${models[@]}"; do
@@ -21,7 +23,7 @@ for dataset in "${datasets[@]}"; do
                             --feat_type zeros \
                             --null_nsamples 1 \
                             --batch_size 16000 \
-                            --device $1;
+                            --device ${device};
                     else
                         python train.py \
                             --model ${model} \
@@ -34,7 +36,7 @@ for dataset in "${datasets[@]}"; do
                             --feat_type zeros \
                             --null_nsamples 1 \
                             --batch_size 1000 \
-                            --device $1;
+                            --device ${device};
                     fi
                 done
             done

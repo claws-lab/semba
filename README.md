@@ -58,4 +58,6 @@ In addition, we can tune other hyperparameters such as number of epochs, initial
 
 Note that for Epinions dataset, pass the batch size as `--batch_size 16000`. 
 
+**Running all methods:** `./run_baselines.sh`
+
 **Saved models:** We also provide saved models for each model, dataset, and task triplet except for Epinions. Test performance can be found by simply running `python eval.py --model \<MODEL> --dataset \<DATASET> --task \<TASK>`. Note that epinions saved models are not uploaded due to large size and will be provided through email requests (contact: ksartik@gatech.edu, dropbox link COMING SOON). 

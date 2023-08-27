@@ -152,8 +152,10 @@ if __name__ == '__main__':
         PATH = f'baselines/{args.model}/saved_models/{args.dataset}/{args.task}/'
     try:
         model_params = pkl.load(open (f'{PATH}/model_params.pkl', 'rb'))
-        model = STGNN (device=args.device, debug=args.debug, **model_params)
-        model.load_state_dict(f'{PATH}/model_state.pt')
+        model_params["device"] = args.device
+        model_params["debug"] = args.debug
+        model = STGNN (**model_params)
+        model.load_state_dict(torch.load(f'{PATH}/model_state.pt', map_location=args.device))
     except:
         print ("Saved model not available")
         exit()
@@ -166,9 +168,9 @@ if __name__ == '__main__':
         metrics = ["AUC", "F1_wt", "F1_bin"]
     metric_string = lambda x: ' '.join([f'{metric}: {param:.4f}' for metric, param in zip(metrics, x)])
     
-    test_loss, test_params = test(test_data, 'test')
-    test_trans_loss, test_trans_params = test(test_trans_data, 'test')
-    test_ind_loss, test_ind_params = test(test_ind_data, 'test')
+    test_loss, test_params = test(args, test_data, 'test')
+    test_trans_loss, test_trans_params = test(args, test_trans_data, 'test')
+    test_ind_loss, test_ind_params = test(args, test_ind_data, 'test')
     print('*****************')
     print('Overall performance')
     print('*****************')

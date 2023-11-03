@@ -2,7 +2,7 @@
 
 Supplementary code for the work published at CIKM 2023. 
 
-Paper link: (To appear)
+Paper link: [https://dl.acm.org/doi/10.1145/3583780.3615032](https://dl.acm.org/doi/10.1145/3583780.3615032)
 
 Arxiv: [https://arxiv.org/abs/2207.03408](https://arxiv.org/abs/2207.03408)
 
